@@ -4,21 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class AlgorithmsApplication {
-		     
-    public static class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) { val = x; }
-        
-        public static ListNode newNode(int val) {
-        	return new ListNode(val);
-        }
-    }
+
+
+class Wrapper {
+   
      
     
     public static int[] stringToIntegerArray(String input) {
@@ -44,9 +34,18 @@ public class AlgorithmsApplication {
         // Now convert that list into linked list
         ListNode dummyRoot = new ListNode(0);
         ListNode ptr = dummyRoot;
+        
+        System.out.println(ptr);
+        
         for(int item : nodeValues) {
             ptr.next = new ListNode(item);
+          
+            System.out.println("Next: " + ptr.next);
+            
             ptr = ptr.next;
+        
+            System.out.println(ptr);
+            
         }
         return dummyRoot.next;
     }
@@ -63,22 +62,15 @@ public class AlgorithmsApplication {
         System.out.println("Empty LinkedList");
       }
     }
+}
 
-
+public class MainClass {
     public static void main(String[] args) throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         String line;
         while ((line = in.readLine()) != null) {
-            ListNode node = AlgorithmsApplication.stringToListNode(line);
-            AlgorithmsApplication.prettyPrintLinkedList(node);
+            ListNode node = Wrapper.stringToListNode(line);
+            Wrapper.prettyPrintLinkedList(node);
         }
     }
-
-//	public static void main(String[] args) {
-//		
-//		
-//		
-//		SpringApplication.run(AlgorithmsApplication.class, args);
-//	}
-
 }
